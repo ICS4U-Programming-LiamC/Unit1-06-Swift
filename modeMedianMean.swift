@@ -11,7 +11,7 @@
 
 import Foundation
 
-func Mean(array: [Int]) -> Int {
+func Mean(array: [Int]) -> Double {
   var total = 0
   
   // adds all numbers in the array
@@ -19,8 +19,11 @@ func Mean(array: [Int]) -> Int {
     total += each
   }
   
-  // caculates and returns the median
-  return (total / array.count)
+  // had to convert them to doubles so that I could get a decimal
+  let meanResult = Double(total) / Double(array.count)
+  
+  // returns the mode
+  return (meanResult)
 }
 
 func Median(array: [Int]) -> Int {
@@ -117,13 +120,18 @@ func sortArray(unsortedArray: [Int]) -> [Int] {
 }
 
 func main() {
-  // create vars
-
+  // gets which file we want to read
+  print("Which txt file do you want to read from: ")
+  let fileNum = readLine()
+  
   // defines file location
-  let file = "set3.txt"
+  let file = "set"+fileNum!+".txt"
   // gets the array from the txt file then sorts it
   let arrayOfInts: [Int] = readFile(file)
   let sortedArray: [Int] = sortArray(unsortedArray: arrayOfInts)
+
+  // prints sorted array
+  print(sortedArray)
 
   // gets mean, median, and mode
   let mean = Mean(array: sortedArray)
